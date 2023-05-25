@@ -1,4 +1,4 @@
-# Data Pipeline with Airflow
+# Reddit Data Pipeline com Airflow
 
 ## Visão Geral
 
@@ -12,20 +12,30 @@ O pipeline de dados obedece a seguinte arquitetura
 
 1. **Coleta de Dados**: Nesta etapa, os dados são coletados a partir da API pública do Reddit. A ferramenta utilizada para a coleta dos dados foi a biblioteca `requests` do Python.
 
-2. **Transformação de Dados**: Após a coleta, os dados foram selecionados e transformados com o auxílio da biblioteca `pandas`
+2. **Transformação de Dados:** Após a coleta, os dados foram selecionados e transformados com o auxílio da biblioteca `pandas`
 
-3. **Armazenamento de Dados**: Os dados selecionados e transformados são armazenados como arquivos CSV em um bucket do Amazon S3. Para interagir com o Amazon S3, é utilizada a biblioteca Python `s3fs`, que permite o envio dos arquivos CSV para o bucket.
+3. **Armazenamento de Dados:** Os dados selecionados e transformados são armazenados como arquivos CSV em um bucket do `Amazon S3`. Para interagir com o `Amazon S3`, é utilizada a biblioteca Python `s3fs`, que permite o envio dos arquivos CSV para o bucket.
 
-4. **Agendamento e Orquestração**: O agendamento e a orquestração do pipeline são realizados usando o Apache Airflow. 
+4. **Agendamento e Orquestração:** O agendamento e a orquestração do pipeline são realizados usando o `Apache Airflow`. 
 
-5. **Processamento em Nuvem**: Para a execução do pipeline, é utilizado o Amazon EC2. O EC2 é responsável por executar tarefas do pipeline, como a coleta de dados, processamento e envio para o Amazon S3.
+5. **Processamento em Nuvem**: Para a execução do pipeline, é utilizado o `Amazon EC2`. O EC2 é responsável por executar tarefas do pipeline, como a coleta de dados, processamento e envio para o `Amazon S3`.
 
-## Ferramentas e Tecnologias Utilizadas
+## Configuração e execução do Pipeline
 
-O projeto foi desenvolvido utilizando as seguintes ferramentas e tecnologias:
+1. **Criação da instância EC2:** A instância a ser criada deve possuir no mínimo 4gb de memória RAM.
 
-- Python:
-- Bibliotecas Python:
-- Amazon Web Services:
-- Apache Airflow:
-- Reddit public API:
+2. **Configuração do Ambiente:** É necssário configurar o ambiente de desenvolvimento com as bibliotecas e dependências necessárias, como o sistema de gerenciamento de pacotes pip, pandas, requests, s3fs e Apache Airflow.
+
+```
+sudo apt-get update
+sudo apt install python3-pip
+sudo pip install apache-airflow
+sudo pip install pandas
+sudo pip install s3fs
+```
+
+3. **Definição das Tarefas e Configurações dos Parâmetros do Pipeline:** São definidas as tarefas, o DAG (Directed Acyclic Graphs) e os parâmetros necessários para a execução do pipeline, como a frequência da coleta dos dados.
+
+4. **Configurações das Credenciais:** É necessário configurar as credenciais de acesso ao Amazon S3 e EC2, criando uma nova role com policies de acesso ao S3 e EC2 e atribuindo as permissões à instância EC2 criada.
+
+5. **Execução do Pipeline:** O pipeline é executado diariamente ao fim do dia. A tarefa realiza a coleta, processamento e envio para o Amazon S3.
