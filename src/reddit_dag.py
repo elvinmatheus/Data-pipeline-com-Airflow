@@ -19,12 +19,12 @@ default_args = {
 dag = DAG(
     'reddit_dag', # identificador exclusivo para o DAG
     default_args=default_args, 
-    description='My first ETL code',
-    schedule_inteval = timedelta(days=1) # Define o agendamento do DAG
+    description='Data pipeline com Airflow',
+    schedule_interval = timedelta(days=1) # Define o agendamento do DAG
 )
 
 run_etl = PythonOperator(
-    task_id='complete_reddit_etl', # Identificador exclusivo para a tarefa
+    task_id='data_pipeline_completo', # Identificador exclusivo para a tarefa
     python_callable = run_reddit_etl, # A função que será executada quando a tarefa for acionada
     dag=dag # A instância do objeto DAG ao qual a tarefa pertence
 )

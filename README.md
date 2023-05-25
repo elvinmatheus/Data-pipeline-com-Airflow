@@ -22,9 +22,9 @@ O pipeline de dados obedece a seguinte arquitetura
 
 ## Configuração e execução do Pipeline
 
-1. **Criação da instância EC2:** A instância a ser criada deve possuir no mínimo 4gb de memória RAM.
+1. **Criação da instância EC2 e do bucket no S3:** É preciso ter o AWS CLI instalado e configurado corretamente para criar instâncias EC2 e buckets S3. Execute o arquivo `create_instance_and_bucket.sh`.
 
-2. **Configuração do Ambiente:** É necssário configurar o ambiente de desenvolvimento com as bibliotecas e dependências necessárias, como o sistema de gerenciamento de pacotes pip, pandas, requests, s3fs e Apache Airflow.
+2. **Configuração do Ambiente:** Na instância criada é preciso configurar o ambiente de desenvolvimento com as bibliotecas e dependências necessárias, como o sistema de gerenciamento de pacotes pip, pandas, requests, s3fs e Apache Airflow.
 
 ```
 sudo apt-get update
@@ -36,6 +36,6 @@ sudo pip install s3fs
 
 3. **Definição das Tarefas e Configurações dos Parâmetros do Pipeline:** São definidas as tarefas, o DAG (Directed Acyclic Graphs) e os parâmetros necessários para a execução do pipeline, como a frequência da coleta dos dados.
 
-4. **Configurações das Credenciais:** É necessário configurar as credenciais de acesso ao Amazon S3 e EC2, criando uma nova role com policies de acesso ao S3 e EC2 e atribuindo as permissões à instância EC2 criada.
+4. **Configurações das Credenciais:** É necessário configurar as credenciais de acesso ao Amazon S3, criando uma nova role com regras de acesso ao S3 e atribuindo as permissões à instância EC2 criada.
 
 5. **Execução do Pipeline:** O pipeline é executado diariamente ao fim do dia. A tarefa realiza a coleta, processamento e envio para o Amazon S3.
