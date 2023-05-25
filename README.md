@@ -10,7 +10,6 @@ O pipeline de dados obedece a seguinte arquitetura
 
 [Imagem representando o pipeline de dados](https://github.com/elvinmatheus/Data-pipeline-with-Airflow/blob/main/Sem%20t%C3%ADtulo-2023-05-25-1435.png)
 
-
 1. **Coleta de Dados**: Nesta etapa, os dados são coletados a partir da API pública do Reddit. A ferramenta utilizada para a coleta dos dados foi a biblioteca `requests` do Python.
 
 2. **Transformação de Dados**: Após a coleta, os dados foram selecionados e transformados com o auxílio da biblioteca `pandas`
