@@ -8,7 +8,7 @@ Este documento descreve o projeto de um pipeline de dados que utiliza a API do R
 
 O pipeline de dados obedece a seguinte arquitetura:
 
-![Imagem representando o pipeline de dados](https://github.com/elvinmatheus/Data-pipeline-com-Airflow/blob/main/images/Pipeline.png)
+![Imagem representando o pipeline de dados](https://github.com/elvinmatheus/Data-pipeline-com-Airflow/blob/main/images/Arquitetura.png)
 
 1. **Coleta de Dados**: Nesta etapa, os dados são coletados a partir da API pública do Reddit. A ferramenta utilizada para a coleta dos dados foi a biblioteca `requests` do `Python`.
 
